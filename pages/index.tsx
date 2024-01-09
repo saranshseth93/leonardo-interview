@@ -76,7 +76,7 @@ export default function Home() {
           setHasSignedUp={setHasSignedUp}
         />
 
-        {hasSignedUp && (
+        {hasSignedUp && username !== "" && jobTitle !== "" && (
           <>
             {loading && <Text pt={12}>Loading...</Text>}
             {error && <p>Error :</p>}
