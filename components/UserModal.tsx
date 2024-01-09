@@ -62,7 +62,12 @@ const UserModal: React.FC = () => {
   };
 
   return (
-    <Modal isOpen={isModalOpen} isClosable={false} size="3xl">
+    <Modal
+      isOpen={isModalOpen}
+      closeOnOverlayClick={false}
+      onClose={() => {}}
+      size="3xl"
+    >
       <ModalOverlay />
       <ModalContent
         maxW="90%"
