@@ -88,7 +88,7 @@ const MediaGrid: React.FC<Props> = ({ mediaData, hasSignedUp }) => {
           lg: "repeat(4, 1fr)",
         }}
         gap={6}
-        pt={10}
+        pt={20}
       >
         {hasSignedUp
           ? mediaData.map((media) => (

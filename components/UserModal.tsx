@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// Importing necessary components from Chakra UI and Lottie for animations
 import {
   Modal,
   ModalOverlay,
@@ -7,25 +8,35 @@ import {
   ModalBody,
   Button,
   Input,
-  Image,
   FormLabel,
   Flex,
+  ModalCloseButton,
 } from "@chakra-ui/react";
 import Lottie from "react-lottie";
 import helloAnimation from "../public/animations/Hello.json";
 import jobAnimation from "../public/animations/Job.json";
 
+// Type definitions for props
 type UserModalProps = {
   setHasSignedUp: (hasSignedUp: boolean) => void;
+  isProfileEdit: boolean;
+  isOpen: boolean;
+  onClose: () => void;
 };
 
-const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
+const UserModal: React.FC<UserModalProps> = ({
+  setHasSignedUp,
+  isProfileEdit,
+  isOpen,
+  onClose,
+}) => {
+  // State for managing steps, username, jobTitle and window width
   const [step, setStep] = useState<number>(1);
   const [username, setUsername] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
   const [windowWidth, setWindowWidth] = useState(0);
 
+  // Effect to retrieve data from localStorage and set up window resize listener
   useEffect(() => {
     const userData = localStorage.getItem("userData");
     if (userData) {
@@ -41,17 +52,28 @@ const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Lottie animation size adjustment based on window width
   const lottieSize = windowWidth < 768 ? "50vw" : "250px";
 
+  // Effect to update localStorage whenever username or jobTitle changes
   useEffect(() => {
     localStorage.setItem("userData", JSON.stringify({ username, jobTitle }));
   }, [username, jobTitle]);
 
+  // Effect to reset to the first step when isProfileEdit changes
+  useEffect(() => {
+    if (isProfileEdit) {
+      setStep(1);
+    }
+  }, [isProfileEdit]);
+
+  // Handlers for input changes
   const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(e.target.value);
   const handleJobTitleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setJobTitle(e.target.value);
 
+  // Lottie animation options
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -63,14 +85,23 @@ const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
 
   const closeModal = () => {
     setHasSignedUp(true);
-    setIsModalOpen(false);
+    onClose();
+  };
+
+  // Decide modal title based on the context (sign up or profile edit or step)
+  const decideTitle = () => {
+    if (isProfileEdit) {
+      return "Edit Profile";
+    } else {
+      return step === 1 ? "Welcome!" : "Let's get to know you!";
+    }
   };
 
   return (
     <Modal
-      isOpen={isModalOpen}
+      isOpen={isOpen}
       closeOnOverlayClick={false}
-      onClose={() => {}}
+      onClose={closeModal}
       size="3xl"
     >
       <ModalOverlay />
@@ -81,11 +112,12 @@ const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
           border: "2px solid #39ff14",
         }}
       >
+        {isProfileEdit && <ModalCloseButton onClick={onClose} />}
         <ModalHeader
           fontSize={{ base: "xl", sm: "2xl", md: "3xl" }}
           textAlign="center"
         >
-          {step === 1 ? "Welcome!" : "Let's get to know you!"}
+          {decideTitle()}
         </ModalHeader>
         <ModalBody pb={10}>
           {step === 1 ? (
@@ -128,7 +160,7 @@ const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
                 </Button>
                 {jobTitle.trim() !== "" && (
                   <Button mt={6} onClick={closeModal}>
-                    Sign Up
+                    {isProfileEdit ? "Update" : "Sign Up"}
                   </Button>
                 )}
               </Flex>
