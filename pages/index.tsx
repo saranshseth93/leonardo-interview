@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome | Leonardo AI</title>
+        <title>Welcome | AniTron</title>
         <meta
           name="description"
           content="Technical Interview question for Leonardo AI"

@@ -110,7 +110,7 @@ const UserModal: React.FC<UserModalProps> = ({
           border: "2px solid #39ff14",
         }}
         mx={3}
-        width={{ base: "90%", md: "auto" }}
+        width={{ base: "90%", md: "40%" }}
       >
         {isProfileEdit && <ModalCloseButton onClick={onClose} />}
         <ModalHeader
