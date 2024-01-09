@@ -1,40 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Leonardo.Ai Web Team Technical Challenge V2.2
 
-## Getting Started
+## Challenge Instruction
 
-First, run the development server:
+Welcome to the Leonardo.Ai Web Team Technical Challenge V2.2. Please complete the following steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. **Code Documentation**: Ensure your code is appropriately documented.
+2. **NextJS Setup**: Set up a NextJS project with TypeScript.
+3. **UI Elements**: Use the ChakraUI component library for UI elements.
+4. **Welcome Modal with Two Slides**:
+   a. First slide for setting a username.
+   b. Second slide for setting a job title.
+   c. Persist and display user information post-login.
+   - Viewable in full once logged in.
+   - Editable post-login.
+5. **Apollo Client**: Use Apollo client to query a public GraphQL API.
+6. **Information Page**:
+   - Display GraphQL API data on a page.
+   - Ensure mobile and tablet compatibility.
+   - Accessible only after setting user information.
+7. **Item Details Modal**: Clicking an item on the “Information Page” opens a modal with item details.
+8. **Deployment**: Deploy on Vercel's free tier.
