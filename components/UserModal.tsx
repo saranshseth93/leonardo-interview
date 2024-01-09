@@ -15,7 +15,11 @@ import Lottie from "react-lottie";
 import helloAnimation from "../public/animations/Hello.json";
 import jobAnimation from "../public/animations/Job.json";
 
-const UserModal: React.FC = () => {
+type UserModalProps = {
+  setHasSignedUp: (hasSignedUp: boolean) => void;
+};
+
+const UserModal: React.FC<UserModalProps> = ({ setHasSignedUp }) => {
   const [step, setStep] = useState<number>(1);
   const [username, setUsername] = useState<string>("");
   const [jobTitle, setJobTitle] = useState<string>("");
@@ -58,6 +62,7 @@ const UserModal: React.FC = () => {
   };
 
   const closeModal = () => {
+    setHasSignedUp(true);
     setIsModalOpen(false);
   };
 
