@@ -8,13 +8,13 @@ import { useEffect } from "react";
 const inter = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
 export default function Home() {
-  const userData = localStorage.getItem("userData");
   useEffect(() => {
+    const userData = localStorage.getItem("userData");
     if (userData) {
       const parsedData = JSON.parse(userData);
       console.log(parsedData);
     }
-  }, [userData]);
+  }, []);
 
   return (
     <>
