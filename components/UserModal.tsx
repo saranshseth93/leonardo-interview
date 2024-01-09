@@ -106,11 +106,11 @@ const UserModal: React.FC<UserModalProps> = ({
     >
       <ModalOverlay />
       <ModalContent
-        maxW="90%"
-        mx={3}
         sx={{
           border: "2px solid #39ff14",
         }}
+        mx={3}
+        width={{ base: "90%", md: "auto" }}
       >
         {isProfileEdit && <ModalCloseButton onClick={onClose} />}
         <ModalHeader
