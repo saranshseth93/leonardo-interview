@@ -19,18 +19,18 @@ const Header: React.FC<HeaderProps> = ({ isSignedUp }) => {
       zIndex={99}
     >
       <Box>
-        <Text fontSize="xl" fontWeight="bold">
-          <Flex align="center">
-            <Image
-              src={logo}
-              width={50}
-              height={50}
-              style={{ marginRight: "8px" }}
-              alt="Logo"
-            />
-            <Text ml={2}>AniTron</Text>
-          </Flex>
-        </Text>
+        <Flex align="center">
+          <Image
+            src={logo}
+            width={50}
+            height={50}
+            style={{ marginRight: "8px" }}
+            alt="Logo"
+          />
+          <Text fontSize="xl" fontWeight="bold" ml={2}>
+            AniTron
+          </Text>
+        </Flex>
       </Box>
       <Box>
         {isSignedUp && (

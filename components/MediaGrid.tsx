@@ -51,7 +51,7 @@ const MediaCard: React.FC<{ media: Media }> = ({ media }) => (
         {truncateTitle(media.title.english || media.title.romaji)}
       </Text>
       <Box display="flex" flexWrap="wrap" justifySelf={"flex-end"}>
-        {media.genres.slice(0, 2).map((genre: string, index: React.Key) => (
+        {media.genres.slice(0, 2).map((genre: string, index: number) => (
           <Text
             key={index}
             fontSize="small"
